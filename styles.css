@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.question-container {
+    margin-bottom: 10px;
+}
+
+.question-input {
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+    padding: 5px;
+    display: none;
+}
+
+.answer-group {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.answer-container {
+    margin-top: 5px;
+    display: none;
+}
+
+.answer-input {
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.correct-answer {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect-answer {
+    color: red;
+    font-weight: bold;
+}
+
+.add-question-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.add-answer-btn {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.mark-answer-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.submit-questions-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+.remove-answer-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.mark-correct-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.mark-incorrect-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.quiz-question {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.quiz-answer {
+    margin-left: 20px;
+}
+
+.true-answer {
+    background-color: lightgreen;
+}
+
+.true-answer::before {
+    content: '\2714'; /* Unicode character for checkmark */
+    margin-right: 5px;
+}
+
+.true-badge {
+    background-color: lightgreen;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+}

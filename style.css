@@ -1,0 +1,260 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  white-space: 100px;
+}
+
+.bg{
+  background-image: url("https://cdn.discordapp.com/attachments/680323781738496000/1106183327322492988/bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+.center {
+  display: flex; /* Встановлюємо flex-контейнер */
+  flex-direction: column; /* Задаємо колонкову орієнтацію */
+  justify-content: center; /* Горизонтальне вирівнювання по центру */
+  align-items: center; /* Вертикальне вирівнювання по центру */
+  height: 100vh; /* Зробити висоту контейнера на 100% висоти сторінки */
+  color: #f6f4e6; /* Задаємо колір тексту */
+  
+}
+
+.centerbg{
+  background-color: #080808;
+  height: 325px;
+  max-width: 325;
+  margin: 100px auto 0;
+  border-radius: 10px;
+  padding: 30px;
+  opacity: 60%;
+  position: relative;
+  z-index: -1;
+}
+
+
+.main-text {
+  font-size: 5em; /* Задаємо розмір тексту */
+}
+
+.sub-text {
+  font-size: 1.2em;
+  margin-top: 20px;
+  text-align: center;
+  word-spacing: normal;
+}
+
+
+body {
+  background: #272727;
+  font-family: "Montserrat", sans-serif;
+}
+
+.navMenu {
+  position: fixed;
+  top: 2%;
+  left: 0%;
+  text-align: left;
+  word-spacing: 100px;
+}
+
+.navMenu a {
+  color: #f6f4e6;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  width: 80px;
+  padding-left: 35px;
+  padding-right: 10px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:nth-child(2) {
+  margin-left: -30px;
+}
+
+.navMenu a:nth-child(3) {
+  margin-left: -65px;
+}
+
+.navMenu a:hover {
+  color: #fddb3a;
+}
+
+.large-word-spacing {
+  word-spacing: 0.5em;
+  white-space: nowrap;
+}
+
+.small-word-spacing {
+  word-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+.button-wrapper {
+  text-align: center;
+  margin: -375px;
+}
+.button {
+  display: inline-block;
+  background-color: #fddb3a;
+  color: #272727;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+  word-spacing: normal;
+}
+.button:hover {
+  background-color: #f5c500;
+}
+
+.app {
+  background-color: #f6f4e6;
+  width: 90%;
+  max-width: 600px;
+  margin: 250px auto 0;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.app h1{
+  font-size: 25px;
+  color: #f5c500;
+  text-shadow: 0 0 2px black;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+
+.quiz{
+  padding: 8px 0;
+}
+
+.quiz h2{
+  font-size: 18px;
+  color: #001e00;
+  font-weight: 600;
+}
+
+.btn{
+  background:#f6f4e6;
+  color: rgb(1, 1, 8);
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid #222;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover:not([disabled]){
+  background: #222;
+  color: #f5c500;
+}
+.btn:disabled{
+  cursor: no-drop;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+#next-btn{
+  background: #001e00;
+  color: #f5c500;
+  font-weight: 500;
+  width: 150px;
+  border: 0;
+  padding: 10px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  counter: pointer;
+  display: none;
+}
+
+.correct{
+  background: #9aeabc;
+}
+
+.incorrect{
+  background: #ff9393;
+}
+
+.about{
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  color: #f6f4e6; 
+  text-align: center;
+  font-size: 30px;
+}
+
+.test1 {
+  background-color: #f6f4e6;
+  width: 90%;
+  max-width: auto;
+  margin: 250px auto 0;
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+  z-index: -1;
+  opacity: 100%;
+}
+
+.test1 {
+  background-color: #f6f4e6;
+  width: 90%;
+  max-width: auto;
+  margin: 250px auto 0;
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+  z-index: -1;
+  opacity: 100%;
+}
+
+.test1 h1,
+.test1 p {
+  color: #000000;
+  text-align: center;
+  position: absolute;
+  left: 56%;
+  font-size: 45px;
+}
+.test1 h2 {
+  position: absolute;
+  color: #000;
+  top: 15%;
+  left: 44%;
+}
+.test1-button {
+  display: inline-block;
+  background-color: #fddb3a;
+  color: #272727;
+  padding: 12px 410px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+  word-spacing: normal;
+  z-index: 2;
+  position: absolute;
+  top: 98%;
+}
+
+.test1 img {
+  position: relative;
+  z-index: -1;
+}

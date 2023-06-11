@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тести</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .true-answer {
+      font-weight: bold;
+    }
+
+    button.test-name {
+      display: block;
+      margin-top: 10px;
+      padding: 5px;
+      width: 600px;
+      height: 50px;
+      border: none;
+      background-color: lightgray;
+      cursor: pointer;
+      text-align: center; /* Center align the text */
+    }
+
+    button.test-name:hover {
+      background-color: gray;
+    }
+
+    button.answer-button {
+      display: block;
+      margin-top: 10px;
+      width: 600px;
+      height: 50px;
+      background-color: lightgray;
+      cursor: pointer;
+    }
+
+    button.answer-button:hover {
+      background-color: gray;
+    }
+
+    button#result-button {
+      width: 500px;
+      height: 40px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Тести</h1>
+    <button id="return-button">Return to Main Page</button>
+    <ul id="test-names-container"></ul>
+    <div id="questions-container"></div>
+    <button id="result-button">Show Result</button>
+    <div id="result-container"></div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+  apiKey: "AIzaSyBr0TrlUw0qzYsi0TQMMwQz5pNfwGc7hg0",
+  authDomain: "testuvalnik.firebaseapp.com",
+  databaseURL: "https://testuvalnik-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "testuvalnik",
+  storageBucket: "testuvalnik.appspot.com",
+  messagingSenderId: "286878960460",
+  appId: "1:286878960460:web:c3bdeeca8546f34b6b9de9"
+};
+    firebase.initializeApp(firebaseConfig);
+
+    function displayTestNamesAndQuestions() {
+      var testNamesContainer = document.getElementById('test-names-container');
+      var questionsContainer = document.getElementById('questions-container');
+      var resultButton = document.getElementById('result-button');
+
+      // Get the reference to the "Tests" node in Firebase Realtime Database
+      var testsRef = firebase.database().ref('Tests');
+
+      // Listen for value changes in the "Tests" node
+      testsRef.on('value', function(snapshot) {
+        testNamesContainer.innerHTML = ''; // Clear previous test names
+        questionsContainer.innerHTML = ''; // Clear previous questions
+        resultButton.style.display = 'none'; // Hide the result button
+
+        // Iterate over each test name in the snapshot
+        snapshot.forEach(function(childSnapshot) {
+          var testName = childSnapshot.key;
+
+          // Create a new button to display the test name
+          var button = document.createElement('button');
+          button.textContent = testName;
+          button.style.cursor = 'pointer';
+          button.classList.add('test-name');
+
+          // Add click event listener to the button
+          button.addEventListener('click', function() {
+            displayQuestions(testName);
+            resultButton.style.display = 'block'; // Show the result button
+          });
+
+          // Append the button to the test names container
+          testNamesContainer.appendChild(button);
+        });
+      });
+    }
+
+    function displayQuestions(testName) {
+      var testNamesContainer = document.getElementById('test-names-container');
+      var questionsContainer = document.getElementById('questions-container');
+      var returnButton = document.getElementById('return-button');
+      var resultButton = document.getElementById('result-button');
+      var resultContainer = document.getElementById('result-container');
+
+      // Hide test names and show the return button
+      testNamesContainer.style.display = 'none';
+      returnButton.style.display = 'block';
+
+      // Clear previous result
+      resultContainer.innerHTML = '';
+
+      // Get the reference to the questions of the selected test name in Firebase Realtime Database
+      var questionsRef = firebase.database().ref('Tests').child(testName);
+
+      // Listen for value changes in the questions
+      questionsRef.on('value', function(snapshot) {
+        questionsContainer.innerHTML = ''; // Clear previous questions
+
+        // Initialize the score counter
+        var score = 0;
+
+        // Iterate over each question in the snapshot
+        snapshot.forEach(function(childSnapshot) {
+          var question = childSnapshot.key;
+          var answersData = childSnapshot.val();
+
+          // Create a new question container
+          var questionContainer = document.createElement('div');
+          questionContainer.className = 'question-container';
+
+          // Create a new question element
+          var questionElement = document.createElement('h3');
+          questionElement.textContent = question;
+
+          // Append the question element to the question container
+          questionContainer.appendChild(questionElement);
+
+          // Iterate over each answer in the answersData array
+          answersData.forEach(function(answerData) {
+            var answer = answerData.answer;
+            var isTrue = answerData.isTrue;
+
+            // Create a new answer button
+            var answerButton = document.createElement('button');
+            answerButton.textContent = answer;
+            answerButton.classList.add('answer-button');
+            answerButton.addEventListener('click', function() {
+              updateScore(isTrue, answerButton);
+            });
+
+            // Append the answer button to the question container
+            questionContainer.appendChild(answerButton);
+          });
+
+          // Append the question container to the questions container
+          questionsContainer.appendChild(questionContainer);
+        });
+
+        // Add click event listener to the return button
+        returnButton.addEventListener('click', function() {
+          // Show test names and hide the return button
+          testNamesContainer.style.display = 'block';
+          returnButton.style.display = 'none';
+          questionsContainer.innerHTML = ''; // Clear previous questions
+          resultContainer.innerHTML = ''; // Clear previous result
+          resultButton.style.display = 'none'; // Hide the result button
+        });
+
+        // Add click event listener to the result button
+        resultButton.addEventListener('click', function() {
+          // Create a new result element
+          var resultElement = document.createElement('p');
+          resultElement.textContent = 'Your score: ' + score + ' out of ' + snapshot.numChildren();
+          resultContainer.appendChild(resultElement);
+
+          // Clear the answers
+          var answerButtons = document.getElementsByClassName('answer-button');
+          for (var i = 0; i < answerButtons.length; i++) {
+            var answerButton = answerButtons[i];
+            answerButton.style.backgroundColor = 'lightgray';
+          }
+        });
+
+        function updateScore(isTrue, button) {
+          if (isTrue) {
+            button.style.backgroundColor = 'green';
+            score++;
+          } else {
+            button.style.backgroundColor = 'red';
+          }
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var testNamesContainer = document.getElementById('test-names-container');
+      var resultButton = document.getElementById('result-button');
+
+      var returnButton = document.getElementById('return-button');
+      returnButton.style.display = 'none'; // Hide the return button initially
+
+      displayTestNamesAndQuestions();
+    });
+  </script>
+</body>
+
+</html>
