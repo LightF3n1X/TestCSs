@@ -1,20 +1,68 @@
 <!DOCTYPE html>
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Тести</title>
   <style>
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .small-word-spacing {
+  word-spacing: 0.2em;
+  white-space: nowrap;
+}
+    .bg{
+  background-image: url("https://cdn.discordapp.com/attachments/680323781738496000/1106183327322492988/bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+    .navMenu {
+      position: fixed;
+      top: 2%;
+      left: 0%;
+      text-align: left;
+      word-spacing: 100px;
+      z-index: 1; /* Ensure the navbar appears above other elements */
+    }
+
+    .navMenu a {
+      color: #f6f4e6;
+      text-decoration: none;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      display: inline-block;
+      width: 80px;
+      padding-left: 35px;
+      padding-right: 10px;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .navMenu a:nth-child(2) {
+      margin-left: -30px;
+    }
+
+    .navMenu a:nth-child(3) {
+      margin-left: -65px;
+    }
+
+    .navMenu a:hover {
+      color: #fddb3a;
     }
 
     .container {
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     ul {
@@ -59,13 +107,26 @@
       height: 40px;
       margin: 0 auto;
     }
+
+    #result-container {
+  color: white; /* Change the text color to white */
+}
+
+
+
   </style>
 </head>
 
-<body>
+<body class="bg">
+  <nav class="navMenu">
+    <a href="./index.html">Домашня</a>
+    <a href="./tests.html">Тести</a>
+    <a href="./about.html" class="small-word-spacing">Про Сайт</a>
+    <a href="./creator.html">Новий тест</a>
+  </nav>
   <div class="container">
-    <h1>Тести</h1>
-    <button id="return-button">Return to Main Page</button>
+    <h1><font color="black">Тести</font></h1>
+    <button id="return-button"></button>
     <ul id="test-names-container"></ul>
     <div id="questions-container"></div>
     <button id="result-button">Show Result</button>

@@ -13,22 +13,30 @@
         }
     </style>
 </head>
-<body>
+<body class="bg">
+    <body class="bg">
+        <nav class="navMenu">
+        <a href="./index.html">Домашня</a>
+        <a href="./tests.html">Тести</a>
+        <a href="./about.html" class="small-word-spacing">Про Сайт</a>
+        </nav>
     <div>
-        <h1>Question Creator</h1>
-        <label for="test-name-input">Test Name:</label>
-        <input type="text" id="test-name-input" placeholder="Enter test name...">
+        <h1><font color="#96f2b6">Конструктор тесту</font></h1>
+<b><font color="white">Натисніть "Додати запитання", для<br>нового запитання, "додати відповідь"<br> додасть відповідь до запитання<br>і відповідно кнопка "Прибрати<br>варіант відповіді" прибере його.</b>
+        <br>
+        <label for="test-name-input"><h3>Назва тесту:</label>
+        <input type="text" id="test-name-input" placeholder="Введіть назву...">
         <div id="questions-container">
             <div class="question-container">
-                <input type="text" class="question-input" placeholder="Enter your question...">
+                <input type="text" class="question-input" placeholder="Введіть запитання...">
                 <div class="answer-container">
                     <input type="text" class="answer-input" placeholder="Enter the answer...">
-                    <button class="add-answer-btn">Add Answer</button>
+                    <button class="add-answer-btn">Додати відповідь</button>
                 </div>
             </div>
         </div>
-        <button id="add-question-btn" class="add-question-btn">Add Question</button>
-        <button id="submit-questions-btn" class="submit-questions-btn">Submit Questions</button>
+        <button id="add-question-btn" class="add-question-btn">Додати запитання</button>
+        <button id="submit-questions-btn" class="submit-questions-btn">Зберігти тест</button>
         <div id="quiz-container"></div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

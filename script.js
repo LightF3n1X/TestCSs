@@ -15,7 +15,7 @@ function addAnswer(answerContainer) {
   var answerInput = document.createElement('input');
   answerInput.type = 'text';
   answerInput.className = 'answer-input';
-  answerInput.placeholder = 'Enter the answer...';
+  answerInput.placeholder = 'Введіть відповідь...';
 
   var answerGroup = document.createElement('div');
   answerGroup.className = 'answer-group';
@@ -23,21 +23,21 @@ function addAnswer(answerContainer) {
 
   var addAnswerBtn = document.createElement('button');
   addAnswerBtn.className = 'add-answer-btn';
-  addAnswerBtn.textContent = 'Add Answer';
+  addAnswerBtn.textContent = 'Додати варіант відпоіді';
   addAnswerBtn.addEventListener('click', function () {
     addAnswer(answerContainer);
   });
 
   var removeAnswerBtn = document.createElement('button');
   removeAnswerBtn.className = 'remove-answer-btn';
-  removeAnswerBtn.textContent = 'Remove Answer';
+  removeAnswerBtn.textContent = 'Прибрати варіант відповіді';
   removeAnswerBtn.addEventListener('click', function () {
     removeAnswer(answerContainer, answerGroup);
   });
 
   var markAnswerBtn = document.createElement('button');
   markAnswerBtn.className = 'mark-answer-btn';
-  markAnswerBtn.textContent = 'Mark as True';
+  markAnswerBtn.textContent = 'Позначити відповідь як істинну';
   markAnswerBtn.addEventListener('click', function () {
     markAnswer(answerContainer, answerInput);
   });
@@ -82,7 +82,7 @@ function addQuestion() {
   var questionInput = document.createElement('input');
   questionInput.type = 'text';
   questionInput.className = 'question-input';
-  questionInput.placeholder = 'Enter your question...';
+  questionInput.placeholder = 'Введіть запитання...';
 
   var answerContainer = document.createElement('div');
   answerContainer.className = 'answer-container';
@@ -90,14 +90,14 @@ function addQuestion() {
 
   var addAnswerBtn = document.createElement('button');
   addAnswerBtn.className = 'add-answer-btn';
-  addAnswerBtn.textContent = 'Add Answer';
+  addAnswerBtn.textContent = 'Додати варіант відповіді';
   addAnswerBtn.addEventListener('click', function () {
     addAnswer(answerContainer);
   });
 
   var markAnswerBtn = document.createElement('button');
   markAnswerBtn.className = 'mark-answer-btn';
-  markAnswerBtn.textContent = 'Mark as True';
+  markAnswerBtn.textContent = 'Позначити відповідь як істинну';
   markAnswerBtn.addEventListener('click', function () {
     markAnswer(answerContainer, questionInput);
   });
