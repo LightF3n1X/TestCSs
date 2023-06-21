@@ -129,7 +129,7 @@
     <button id="return-button"></button>
     <ul id="test-names-container"></ul>
     <div id="questions-container"></div>
-    <button id="result-button">Show Result</button>
+    <button id="result-button">Показати результати</button>
     <div id="result-container"></div>
   </div>
 
@@ -259,7 +259,7 @@
         resultButton.addEventListener('click', function() {
           // Create a new result element
           var resultElement = document.createElement('p');
-          resultElement.textContent = 'Your score: ' + score + ' out of ' + snapshot.numChildren();
+          resultElement.textContent = 'Ваш відповіли вірно на ' + score + ' з ' + snapshot.numChildren();
           resultContainer.appendChild(resultElement);
 
           // Clear the answers
